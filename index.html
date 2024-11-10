@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Tela de Tarefas de Hoje -->
+    <div class="screen today-screen">
+        <h2>Today</h2>
+        <p id="current-date"></p>
+        
+        <!-- Calendário Simples para Dias -->
+        <div class="calendar">
+            <span class="day">Mon</span><span class="day active">Tue</span><span class="day">Wed</span><span class="day">Thu</span><span class="day">Fri</span><span class="day">Sat</span><span class="day">Sun</span>
+        </div>
+
+        <!-- Contêiner de Tarefas com Rolagem -->
+        <div class="tasks-container">
+            <!-- Seção To Do -->
+            <h3>To Do</h3>
+            <div class="tasks" id="to-do-list">
+                <!-- Os hábitos para fazer aparecerão aqui -->
+            </div>
+
+            <!-- Seção Done -->
+            <h3>Done</h3>
+            <div class="tasks" id="done-list">
+                <!-- Os hábitos concluídos aparecerão aqui -->
+            </div>
+        </div>
+
+        <!-- Botão para Adicionar Novo Hábito -->
+        <button class="add-habit" onclick="addHabit()">Add New Habit</button>
+
+        <!-- Navegação -->
+        <div class="navigation">
+            <button>Home</button>
+            <button>Profile</button>
+            <button>Progress</button>
+            <button>Settings</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
