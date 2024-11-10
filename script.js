@@ -1,8 +1,16 @@
+let currentHabitName = '';
+let checkinDays = []; // Inicializa o array de dias de check-in vazio
+
 function showScreen(screen) {
     const screens = document.querySelectorAll('.screen');
     screens.forEach(s => s.style.display = 'none');
     
     document.querySelector(`.${screen}`).style.display = 'block';
+
+    if (screen === 'progress-screen') {
+        document.getElementById('habit-name').textContent = currentHabitName;
+        generateCalendar();
+    }
 }
 
 function addHabit() {
@@ -10,76 +18,78 @@ function addHabit() {
     if (habitName) {
         const toDoList = document.getElementById("to-do-list");
 
-        // Cria um novo elemento de tarefa
         const task = document.createElement("div");
         task.className = "task todo";
+        task.onclick = () => openProgress(habitName);
 
-        // Texto do nome do hábito
         const taskName = document.createElement("span");
         taskName.textContent = habitName;
 
-        // Botão para marcar como completo
         const completeButton = document.createElement("button");
         completeButton.className = "complete";
         completeButton.textContent = "✔️";
-        completeButton.onclick = () => markAsDone(task);
+        completeButton.onclick = (e) => {
+            e.stopPropagation();
+            markAsDone(task);
+        };
 
-        // Adiciona o nome e o botão ao elemento da tarefa
         task.appendChild(taskName);
         task.appendChild(completeButton);
 
-        // Adiciona a nova tarefa à lista To Do
         toDoList.appendChild(task);
     }
 }
 
 function markAsDone(task) {
-    // Muda a cor e o estilo para Done
     task.classList.remove("todo");
     task.classList.add("done");
 
-    // Remove o botão de completar
     const completeButton = task.querySelector("button");
     completeButton.remove();
 
-    // Adiciona o botão de reversão
     const revertButton = document.createElement("button");
     revertButton.className = "revert";
     revertButton.textContent = "↩️";
-    revertButton.onclick = () => revertToToDo(task);
+    revertButton.onclick = (e) => {
+        e.stopPropagation();
+        revertToToDo(task);
+    };
 
-    // Adiciona o botão de reversão à tarefa
     task.appendChild(revertButton);
+    document.getElementById("done-list").appendChild(task);
 
-    // Move a tarefa para a lista Done
-    const doneList = document.getElementById("done-list");
-    doneList.appendChild(task);
+    // Adiciona o dia atual ao array de check-in
+    const today = new Date().getDate();
+    if (!checkinDays.includes(today)) {
+        checkinDays.push(today); // Adiciona o dia ao array
+        generateCalendar(); // Atualiza o calendário
+    }
 }
 
 function revertToToDo(task) {
-    // Muda a cor e o estilo para To Do
     task.classList.remove("done");
     task.classList.add("todo");
 
-    // Remove o botão de reversão
     const revertButton = task.querySelector("button");
     revertButton.remove();
 
-    // Adiciona novamente o botão de completar
     const completeButton = document.createElement("button");
     completeButton.className = "complete";
     completeButton.textContent = "✔️";
-    completeButton.onclick = () => markAsDone(task);
+    completeButton.onclick = (e) => {
+        e.stopPropagation();
+        markAsDone(task);
+    };
 
-    // Adiciona o botão de completar à tarefa
     task.appendChild(completeButton);
-
-    // Move a tarefa de volta para a lista To Do
-    const toDoList = document.getElementById("to-do-list");
-    toDoList.appendChild(task);
+    document.getElementById("to-do-list").appendChild(task);
 }
 
-// Função para exibir a data atual
+function openProgress(habitName) {
+    currentHabitName = habitName;
+    showScreen('progress-screen');
+}
+
 function displayCurrentDate() {
     const dateElement = document.getElementById("current-date");
     const today = new Date();
@@ -87,5 +97,23 @@ function displayCurrentDate() {
     dateElement.textContent = today.toLocaleDateString('en-US', options);
 }
 
-// Chama a função ao carregar a página
+// Função para gerar o calendário e marcar os dias de check-in
+function generateCalendar() {
+    const calendarGrid = document.getElementById("calendar-grid");
+    calendarGrid.innerHTML = ''; // Limpa o calendário anterior
+
+    const daysInMonth = 30; // Número de dias no mês (pode ser dinâmico)
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayElement = document.createElement("span");
+        dayElement.textContent = day;
+
+        // Adiciona a classe de check-in se o dia estiver em `checkinDays`
+        if (checkinDays.includes(day)) {
+            dayElement.classList.add("checkin-day");
+        }
+
+        calendarGrid.appendChild(dayElement);
+    }
+}
+
 document.addEventListener("DOMContentLoaded", displayCurrentDate);

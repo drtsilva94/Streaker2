@@ -44,6 +44,29 @@
         </div>
     </div>
 
+      <!-- Tela de Progresso -->
+      <div class="screen progress-screen" style="display: none;">
+        <h2>Progress</h2>
+        <div id="habit-name" class="habit-title">Habit Name</div>
+        <div class="progress-calendar">
+            <p class="month-label">November 2024</p>
+            <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+        <div class="streak-info">
+            <p>This Streak: <span id="current-streak">0 days</span></p>
+            <p>Longest Streak: <span id="longest-streak">0 days</span></p>
+        </div>
+        <button class="edit-habit">Edit Habit</button>
+
+        <!-- Barra de Navegação -->
+        <div class="navigation">
+            <button onclick="showScreen('today-screen')">Home</button>
+            <button>Profile</button>
+            <button onclick="showScreen('progress-screen')">Progress</button>
+            <button>Settings</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -145,3 +145,144 @@ h3 {
     font-size: 14px;
     cursor: pointer;
 }
+
+.habit-title {
+    font-size: 20px;
+    color: #333;
+    margin: 15px 0;
+    background-color: #e0e7ff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.progress-calendar {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.calendar-grid span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background-color: #ffeb3b; /* Cores para os dias com progresso */
+    border-radius: 5px;
+}
+
+.edit-habit {
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Estilos para a Tela de Progresso */
+.habit-title {
+    font-size: 24px;
+    color: #333;
+    margin: 15px 0;
+    background-color: #e0e7ff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.progress-calendar {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.month-label {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.calendar-grid span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #333;
+    background-color: #f0f0f0; /* Cor padrão */
+}
+
+.calendar-grid .checkin-day {
+    background-color: #ffeb3b; /* Cor para dias com check-in */
+}
+
+.streak-info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.streak-info p {
+    margin: 0;
+    text-align: center;
+}
+
+.edit-habit {
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 80%;
+    align-self: center;
+}
+
+.edit-habit:hover {
+    background-color: #ff4f4f;
+}
+
+/* Barra de Navegação */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+.navigation button {
+    flex: 1;
+    padding: 10px;
+    margin: 0 5px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
