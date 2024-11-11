@@ -10,7 +10,7 @@
     <!-- Tela de Tarefas de Hoje -->
     <div class="screen today-screen">
         <h2>Today</h2>
-        <p id="current-date"></p>
+        <p id="current-date">November 10, 2024</p>
         
         <!-- Calendário Simples para Dias -->
         <div class="calendar">
@@ -30,16 +30,9 @@
 
         <!-- Botão para Adicionar Novo Hábito -->
         <button class="add-habit" onclick="addHabit()">Add New Habit</button>
-
-        <!-- Navegação -->
-        <div class="navigation">
-            <button onclick="showScreen('today-screen')">Home</button>
-            <button>Profile</button>
-            <button onclick="showScreen('progress-screen')">Progress</button>
-            <button>Settings</button>
-        </div>
     </div>
 
+    <!-- Tela de Progresso -->
     <div class="screen progress-screen" style="display: none;">
         <h2>Progress</h2>
         <div id="habit-name" class="habit-title">Habit Name</div>
@@ -56,15 +49,15 @@
             <p>Longest Streak: <span id="longest-streak">0 days</span></p>
         </div>
         <button class="edit-habit" onclick="editHabitName()">Edit Habit</button>
-    
-        <div class="navigation">
-            <button onclick="showScreen('today-screen')">Home</button>
-            <button>Profile</button>
-            <button onclick="showScreen('progress-screen')">Progress</button>
-            <button>Settings</button>
-        </div>
     </div>
-    
+
+    <!-- Barra de navegação fixa na parte inferior -->
+    <div class="navigation">
+        <button onclick="showScreen('today-screen')">Home</button>
+        <button>Profile</button>
+        <button onclick="showScreen('progress-screen')">Progress</button>
+        <button>Settings</button>
+    </div>
 
     <script src="script.js"></script>
 </body>

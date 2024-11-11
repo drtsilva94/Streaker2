@@ -25,36 +25,24 @@ body {
     height: 90vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    justify-content: space-between;
 }
 
 h2 {
     font-size: 24px;
     margin-bottom: 5px;
-    position: sticky;
-    top: 0;
-    background-color: #fff;
-    z-index: 10;
 }
 
 p {
     font-size: 14px;
     color: #888;
     margin-bottom: 20px;
-    position: sticky;
-    top: 30px;
-    background-color: #fff;
-    z-index: 10;
 }
 
 .calendar {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    position: sticky;
-    top: 50px;
-    background-color: #fff;
-    z-index: 10;
 }
 
 .calendar .day {
@@ -120,7 +108,7 @@ h3 {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 .add-habit:hover {
@@ -130,9 +118,16 @@ h3 {
 .navigation {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
     background-color: #fff;
-    padding-top: 10px;
+    padding: 10px 0;
+    border-top: 1px solid #e0e0e0;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    border-radius: 0 0 20px 20px;
 }
 
 .navigation button {
@@ -145,6 +140,8 @@ h3 {
     font-size: 14px;
     cursor: pointer;
 }
+
+
 
 .habit-title {
     font-size: 20px;
@@ -296,4 +293,10 @@ h3 {
     border-radius: 50%;
     color: #fff;
     font-weight: bold;
+}
+
+.tasks-container {
+    height: 60vh; /* Defina uma altura fixa para manter a barra de rolagem */
+    overflow-y: auto; /* Garantia de barra de rolagem */
+    padding-right: 5px;
 }

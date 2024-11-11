@@ -260,3 +260,24 @@ function openProgress(habitName) {
     showScreen('progress-screen');
     updateStreakDisplay(habitName); // Atualiza os valores de streak ao abrir a tela de progresso
 }
+
+function showScreen(screen) {
+    const screens = document.querySelectorAll('.screen');
+    screens.forEach(s => s.style.display = 'none');
+    
+    document.querySelector(`.${screen}`).style.display = 'block';
+
+    if (screen === 'progress-screen') {
+        document.getElementById('habit-name').textContent = currentHabitName;
+        generateCalendar();
+    } else if (screen === 'today-screen') {
+        updateHomeScreen();
+    }
+
+    // Força o navegador a recalcular a altura do contêiner
+    const tasksContainer = document.querySelector('.tasks-container');
+    tasksContainer.style.overflowY = 'hidden';
+    setTimeout(() => {
+        tasksContainer.style.overflowY = 'auto';
+    }, 50);
+}
