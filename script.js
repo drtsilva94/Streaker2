@@ -1,5 +1,5 @@
 let currentHabitName = '';
-let checkinDays = []; // Inicializa o array de dias de check-in vazio
+let checkinData = {}; // Objeto para armazenar dias de check-in específicos (ano, mês, dia) para cada hábito
 let currentDate = new Date(); // Data atual para controle do mês e ano
 
 function showScreen(screen) {
@@ -17,6 +17,9 @@ function showScreen(screen) {
 function addHabit() {
     const habitName = prompt("Enter the name of the new habit:");
     if (habitName) {
+        // Inicializa o array de check-ins para o novo hábito
+        checkinData[habitName] = checkinData[habitName] || [];
+
         const toDoList = document.getElementById("to-do-list");
 
         const task = document.createElement("div");
@@ -31,7 +34,7 @@ function addHabit() {
         completeButton.textContent = "✔️";
         completeButton.onclick = (e) => {
             e.stopPropagation();
-            markAsDone(task);
+            markAsDone(task, habitName);
         };
 
         task.appendChild(taskName);
@@ -41,7 +44,7 @@ function addHabit() {
     }
 }
 
-function markAsDone(task) {
+function markAsDone(task, habitName) {
     task.classList.remove("todo");
     task.classList.add("done");
 
@@ -53,20 +56,30 @@ function markAsDone(task) {
     revertButton.textContent = "↩️";
     revertButton.onclick = (e) => {
         e.stopPropagation();
-        revertToToDo(task);
+        revertToToDo(task, habitName);
     };
 
     task.appendChild(revertButton);
     document.getElementById("done-list").appendChild(task);
 
-    const today = new Date().getDate();
-    if (!checkinDays.includes(today)) {
-        checkinDays.push(today); // Adiciona o dia ao array
+    const today = new Date();
+    const checkinDate = { 
+        day: today.getDate(), 
+        month: today.getMonth(), 
+        year: today.getFullYear() 
+    };
+
+    // Adiciona o check-in específico para o hábito atual, se ainda não existir
+    if (!checkinData[habitName].some(date => 
+        date.day === checkinDate.day && 
+        date.month === checkinDate.month && 
+        date.year === checkinDate.year)) {
+        checkinData[habitName].push(checkinDate);
         generateCalendar(); // Atualiza o calendário
     }
 }
 
-function revertToToDo(task) {
+function revertToToDo(task, habitName) {
     task.classList.remove("done");
     task.classList.add("todo");
 
@@ -78,7 +91,7 @@ function revertToToDo(task) {
     completeButton.textContent = "✔️";
     completeButton.onclick = (e) => {
         e.stopPropagation();
-        markAsDone(task);
+        markAsDone(task, habitName);
     };
 
     task.appendChild(completeButton);
@@ -118,11 +131,16 @@ function generateCalendar() {
     const month = currentDate.getMonth();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+    // Obtém os dias de check-in específicos para o hábito atual no mês e ano exibidos
+    const checkinDays = checkinData[currentHabitName]?.filter(date =>
+        date.month === month && date.year === year
+    ).map(date => date.day) || [];
+
     for (let day = 1; day <= daysInMonth; day++) {
         const dayElement = document.createElement("span");
         dayElement.textContent = day;
 
-        // Adiciona a classe de check-in se o dia estiver em `checkinDays`
+        // Adiciona a classe de check-in somente se o dia estiver no array de check-in do hábito atual
         if (checkinDays.includes(day)) {
             dayElement.classList.add("checkin-day");
         }
@@ -134,6 +152,8 @@ function generateCalendar() {
 function editHabitName() {
     const newHabitName = prompt("Enter the new name for the habit:", currentHabitName);
     if (newHabitName) {
+        checkinData[newHabitName] = checkinData[currentHabitName];
+        delete checkinData[currentHabitName];
         currentHabitName = newHabitName;
         document.getElementById('habit-name').textContent = currentHabitName;
     }

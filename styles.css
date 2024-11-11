@@ -290,3 +290,10 @@ h3 {
     padding: 0 10px;
     font-weight: bold;
 }
+
+.calendar-grid .checkin-day {
+    background-color: #ffeb3b; /* Cor de destaque para dias de check-in */
+    border-radius: 50%;
+    color: #fff;
+    font-weight: bold;
+}
