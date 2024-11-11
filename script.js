@@ -2,6 +2,22 @@ let currentHabitName = ''; // Armazena o nome do hábito atualmente em exibiçã
 let checkinData = {}; // Objeto para armazenar dias de check-in específicos (ano, mês, dia) para cada hábito
 let currentDate = new Date(); // Data atual para controle do mês e ano
 
+document.addEventListener("DOMContentLoaded", () => {
+    displayCurrentDate(); // Exibe a data atual no cabeçalho
+    setActiveDayOfWeek(); // Define o dia da semana ativo
+});
+
+function setActiveDayOfWeek() {
+    const daysOfWeek = document.querySelectorAll('.calendar .day'); // Seleciona todos os elementos de dia na div calendar
+
+    // Usa o horário de Brasília (GMT-3) para definir o dia da semana atual
+    const today = new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
+    const brasiliaDayIndex = new Date(today).getDay(); // Obtém o índice do dia da semana (0 = Domingo, 1 = Segunda, etc.)
+
+    daysOfWeek.forEach(day => day.classList.remove('active')); // Remove a classe ativa de todos os dias
+    daysOfWeek[brasiliaDayIndex].classList.add('active'); // Adiciona a classe ativa ao dia da semana atual
+}
+
 // Função para alternar entre telas (por exemplo, tela de progresso e tela de tarefas do dia)
 function showScreen(screen) {
     const screens = document.querySelectorAll('.screen');
@@ -123,7 +139,6 @@ function changeMonth(offset) {
     generateCalendar(); // Atualiza o calendário
 }
 
-// Função para gerar o calendário com base nos check-ins do hábito atual
 function generateCalendar() {
     const monthLabel = document.getElementById("month-label");
     const calendarGrid = document.getElementById("calendar-grid");
@@ -134,23 +149,52 @@ function generateCalendar() {
 
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
+
+    // Adiciona as iniciais dos dias da semana
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    daysOfWeek.forEach(day => {
+        const dayElement = document.createElement("span");
+        dayElement.textContent = day;
+        dayElement.style.fontWeight = "bold";
+        calendarGrid.appendChild(dayElement);
+    });
+
+    // Calcula o primeiro e último dia do mês
+    const firstDayOfMonth = new Date(year, month, 1).getDay(); // Dia da semana do primeiro dia do mês
     const daysInMonth = new Date(year, month + 1, 0).getDate(); // Total de dias no mês
 
+    // Obtém os dias de check-in para o hábito atual no mês e ano atuais
     const checkinDays = checkinData[currentHabitName]?.filter(date =>
         date.month === month && date.year === year
-    ).map(date => date.day) || []; // Filtra os dias de check-in para o mês e ano atuais
+    ).map(date => date.day) || [];
 
+    // Preenche os dias em branco antes do início do mês
+    for (let i = 0; i < firstDayOfMonth; i++) {
+        const emptyElement = document.createElement("span");
+        calendarGrid.appendChild(emptyElement);
+    }
+
+    // Preenche os dias do mês
     for (let day = 1; day <= daysInMonth; day++) {
         const dayElement = document.createElement("span");
         dayElement.textContent = day;
+        dayElement.classList.add("calendar-day");
 
-        if (checkinDays.includes(day)) {
-            dayElement.classList.add("checkin-day"); // Marca o dia com check-in
+        // Destaca o dia atual
+        const today = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+        if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+            dayElement.classList.add("active-day");
         }
 
-        calendarGrid.appendChild(dayElement); // Adiciona o dia ao calendário
+        // Destaca os dias com check-in
+        if (checkinDays.includes(day)) {
+            dayElement.classList.add("checkin-day");
+        }
+
+        calendarGrid.appendChild(dayElement);
     }
 }
+
 
 // Função para renderizar um hábito com base no estado de check-in
 function renderHabit(habitName, isDone) {
