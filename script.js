@@ -197,3 +197,66 @@ function updateHomeScreen() {
 }
 
 document.addEventListener("DOMContentLoaded", displayCurrentDate);
+
+function calculateStreak(habitName) {
+    const today = new Date();
+    const checkinDates = checkinData[habitName] || [];
+
+    // Ordena os check-ins por data (mais antigos primeiro)
+    checkinDates.sort((a, b) => new Date(a.year, a.month, a.day) - new Date(b.year, b.month, b.day));
+
+    let currentStreak = 0;
+    let longestStreak = 0;
+    let streakCounter = 0;
+
+    // Variável para manter a última data de check-in verificada
+    let lastCheckinDate = null;
+
+    checkinDates.forEach(date => {
+        const checkinDate = new Date(date.year, date.month, date.day);
+
+        if (lastCheckinDate) {
+            // Calcula a diferença em dias entre o último check-in e o atual
+            const diffDays = (checkinDate - lastCheckinDate) / (1000 * 60 * 60 * 24);
+
+            if (diffDays === 1) {
+                // Incrementa o contador de streak se for um dia consecutivo
+                streakCounter++;
+            } else {
+                // Se o streak for interrompido, verifica se é o mais longo
+                longestStreak = Math.max(longestStreak, streakCounter);
+                streakCounter = 1; // Reinicia o contador de streak
+            }
+        } else {
+            streakCounter = 1; // Inicia o primeiro streak
+        }
+
+        // Atualiza a última data de check-in
+        lastCheckinDate = checkinDate;
+    });
+
+    // Verifica o streak mais longo no final do loop
+    longestStreak = Math.max(longestStreak, streakCounter);
+
+    // Calcula o streak atual baseado na data de hoje
+    const lastCheckin = checkinDates[checkinDates.length - 1];
+    if (lastCheckin && new Date(lastCheckin.year, lastCheckin.month, lastCheckin.day).getDate() === today.getDate()) {
+        currentStreak = streakCounter;
+    } else {
+        currentStreak = 0; // Se o último check-in não for hoje, zera o streak atual
+    }
+
+    return { currentStreak, longestStreak };
+}
+
+function updateStreakDisplay(habitName) {
+    const { currentStreak, longestStreak } = calculateStreak(habitName);
+    document.getElementById("current-streak").textContent = `${currentStreak} days`;
+    document.getElementById("longest-streak").textContent = `${longestStreak} days`;
+}
+
+function openProgress(habitName) {
+    currentHabitName = habitName;
+    showScreen('progress-screen');
+    updateStreakDisplay(habitName); // Atualiza os valores de streak ao abrir a tela de progresso
+}
