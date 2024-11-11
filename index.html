@@ -4,27 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habit Tracker</title>
+    <!-- Importa o arquivo CSS para estilizar a página -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Tela de Tarefas de Hoje -->
     <div class="screen today-screen">
         <h2>Today</h2>
+        <!-- Exibe a data atual -->
         <p id="current-date">November 10, 2024</p>
         
-        <!-- Calendário Simples para Dias -->
+        <!-- Calendário Simples para exibir os dias da semana -->
         <div class="calendar">
+            <!-- Exibe os dias com uma marcação para o dia ativo -->
             <span class="day">Mon</span><span class="day active">Tue</span><span class="day">Wed</span><span class="day">Thu</span><span class="day">Fri</span><span class="day">Sat</span><span class="day">Sun</span>
         </div>
 
         <!-- Contêiner de Tarefas com Rolagem -->
         <div class="tasks-container">
-            <!-- Seção To Do -->
+            <!-- Seção de tarefas a serem feitas -->
             <h3>To Do</h3>
+            <!-- Lista de tarefas a serem feitas será inserida aqui -->
             <div class="tasks" id="to-do-list"></div>
 
-            <!-- Seção Done -->
+            <!-- Seção de tarefas concluídas -->
             <h3>Done</h3>
+            <!-- Lista de tarefas concluídas será inserida aqui -->
             <div class="tasks" id="done-list"></div>
         </div>
 
@@ -32,33 +37,50 @@
         <button class="add-habit" onclick="addHabit()">Add New Habit</button>
     </div>
 
-    <!-- Tela de Progresso -->
+    <!-- Tela de Progresso para exibir o desempenho do hábito -->
     <div class="screen progress-screen" style="display: none;">
         <h2>Progress</h2>
+        <!-- Nome do hábito em exibição -->
         <div id="habit-name" class="habit-title">Habit Name</div>
+        
+        <!-- Calendário para exibir o progresso do hábito -->
         <div class="progress-calendar">
+            <!-- Navegação entre os meses -->
             <div class="month-navigation">
+                <!-- Botão para mês anterior -->
                 <button onclick="changeMonth(-1)" class="month-button">&#60;</button>
+                <!-- Rótulo para o mês atual -->
                 <p id="month-label">November 2024</p>
+                <!-- Botão para mês seguinte -->
                 <button onclick="changeMonth(1)" class="month-button">&#62;</button>
             </div>
+            <!-- Grade do calendário onde os dias do mês serão exibidos -->
             <div class="calendar-grid" id="calendar-grid"></div>
         </div>
+
+        <!-- Informações de streak (série de dias consecutivos) -->
         <div class="streak-info">
             <p>This Streak: <span id="current-streak">0 days</span></p>
             <p>Longest Streak: <span id="longest-streak">0 days</span></p>
         </div>
+        
+        <!-- Botão para editar o nome do hábito -->
         <button class="edit-habit" onclick="editHabitName()">Edit Habit</button>
     </div>
 
-    <!-- Barra de navegação fixa na parte inferior -->
+    <!-- Barra de navegação fixa na parte inferior da página -->
     <div class="navigation">
+        <!-- Botão para exibir a tela de tarefas de hoje -->
         <button onclick="showScreen('today-screen')">Home</button>
+        <!-- Botão para acessar o perfil do usuário (sem funcionalidade específica) -->
         <button>Profile</button>
+        <!-- Botão para exibir a tela de progresso do hábito -->
         <button onclick="showScreen('progress-screen')">Progress</button>
+        <!-- Botão para acessar as configurações (sem funcionalidade específica) -->
         <button>Settings</button>
     </div>
 
+    <!-- Importa o arquivo JavaScript para controlar a funcionalidade da página -->
     <script src="script.js"></script>
 </body>
 </html>

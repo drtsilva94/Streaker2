@@ -1,66 +1,75 @@
+/* Remove margens e preenchimentos padrão de todos os elementos e define box-sizing para controle de tamanhos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Define estilo básico para o corpo da página */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    background-color: #f0f2f5; /* Cor de fundo suave */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Esconde a barra de rolagem */
 }
 
+/* Estilos para as telas principais (como tarefas de hoje e progresso) */
 .screen {
     width: 90%;
     max-width: 400px;
     padding: 20px;
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    background: #fff; /* Fundo branco */
+    border-radius: 20px; /* Bordas arredondadas */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
     text-align: center;
-    height: 90vh;
+    height: 90vh; /* Altura da tela */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Espaça os elementos verticalmente */
 }
 
+/* Estilo dos títulos principais */
 h2 {
     font-size: 24px;
     margin-bottom: 5px;
 }
 
+/* Estilo para parágrafos genéricos */
 p {
     font-size: 14px;
     color: #888;
     margin-bottom: 20px;
 }
 
+/* Calendário com dias da semana */
 .calendar {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
+/* Estilo dos dias no calendário */
 .calendar .day {
     font-size: 12px;
     color: #333;
     padding: 5px;
     background-color: #f9f9f9;
     border-radius: 5px;
-    flex: 1;
+    flex: 1; /* Cada dia ocupa o mesmo espaço */
     margin: 0 2px;
     text-align: center;
 }
 
+/* Estilo para o dia ativo no calendário */
 .calendar .active {
     background-color: #ffae57;
     color: #fff;
 }
 
+/* Estilo para subtítulos */
 h3 {
     font-size: 18px;
     margin-top: 20px;
@@ -68,12 +77,14 @@ h3 {
     text-align: left;
 }
 
+/* Contêiner para as listas de tarefas */
 .tasks-container {
     flex: 1;
     overflow-y: auto;
     padding-right: 5px;
 }
 
+/* Estilo para listas de tarefas */
 .tasks {
     display: flex;
     flex-direction: column;
@@ -81,6 +92,7 @@ h3 {
     margin: 10px 0;
 }
 
+/* Estilo para cada tarefa */
 .task {
     display: flex;
     justify-content: space-between;
@@ -92,14 +104,17 @@ h3 {
     color: #333;
 }
 
+/* Cor de fundo para tarefas "To Do" */
 .task.todo {
     background-color: #e0e7ff; /* Azul para To Do */
 }
 
+/* Cor de fundo para tarefas "Done" */
 .task.done {
     background-color: #f0ffe0; /* Verde para Done */
 }
 
+/* Estilo do botão para adicionar novos hábitos */
 .add-habit {
     background-color: #6495ED;
     color: #fff;
@@ -111,10 +126,12 @@ h3 {
     margin: 15px 0;
 }
 
+/* Efeito ao passar o mouse sobre o botão */
 .add-habit:hover {
     opacity: 0.9;
 }
 
+/* Estilo da barra de navegação fixa na parte inferior */
 .navigation {
     display: flex;
     justify-content: space-between;
@@ -130,6 +147,7 @@ h3 {
     border-radius: 0 0 20px 20px;
 }
 
+/* Estilos para os botões de navegação */
 .navigation button {
     flex: 1;
     padding: 10px;
@@ -141,8 +159,7 @@ h3 {
     cursor: pointer;
 }
 
-
-
+/* Estilo para o título do hábito */
 .habit-title {
     font-size: 20px;
     color: #333;
@@ -152,6 +169,7 @@ h3 {
     border-radius: 10px;
 }
 
+/* Estilo do contêiner do calendário de progresso */
 .progress-calendar {
     margin: 20px 0;
     padding: 10px;
@@ -159,13 +177,15 @@ h3 {
     border-radius: 10px;
 }
 
+/* Grid para o calendário de progresso */
 .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, 1fr); /* 7 colunas para os dias da semana */
     gap: 5px;
     margin-top: 10px;
 }
 
+/* Estilos para os dias no grid do calendário */
 .calendar-grid span {
     display: flex;
     justify-content: center;
@@ -175,6 +195,7 @@ h3 {
     border-radius: 5px;
 }
 
+/* Estilo do botão para editar hábitos */
 .edit-habit {
     background-color: #ff6b6b;
     color: #fff;
@@ -197,6 +218,7 @@ h3 {
     text-align: center;
 }
 
+/* Estilos adicionais para o calendário de progresso */
 .progress-calendar {
     margin: 20px 0;
     padding: 15px;
@@ -205,6 +227,7 @@ h3 {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilo do rótulo do mês */
 .month-label {
     font-size: 18px;
     color: #666;
@@ -212,6 +235,7 @@ h3 {
     text-align: center;
 }
 
+/* Grid para os dias do calendário */
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -219,6 +243,7 @@ h3 {
     margin-top: 10px;
 }
 
+/* Estilos para os dias padrão no calendário */
 .calendar-grid span {
     display: flex;
     justify-content: center;
@@ -230,10 +255,12 @@ h3 {
     background-color: #f0f0f0; /* Cor padrão */
 }
 
+/* Cor de destaque para dias com check-in */
 .calendar-grid .checkin-day {
-    background-color: #ffeb3b; /* Cor para dias com check-in */
+    background-color: #ffeb3b; /* Cor para dias de check-in */
 }
 
+/* Informações de streak (série de dias consecutivos) */
 .streak-info {
     display: flex;
     justify-content: space-around;
@@ -242,11 +269,13 @@ h3 {
     color: #666;
 }
 
+/* Alinhamento e estilo do texto dentro das informações de streak */
 .streak-info p {
     margin: 0;
     text-align: center;
 }
 
+/* Botão para editar o hábito com efeito ao passar o mouse */
 .edit-habit {
     background-color: #ff6b6b;
     color: #fff;
@@ -260,10 +289,12 @@ h3 {
     align-self: center;
 }
 
+/* Efeito ao passar o mouse no botão de edição */
 .edit-habit:hover {
     background-color: #ff4f4f;
 }
 
+/* Controles de navegação entre meses */
 .month-navigation {
     display: flex;
     align-items: center;
@@ -271,6 +302,7 @@ h3 {
     margin-bottom: 10px;
 }
 
+/* Título do mês */
 .month-navigation p {
     font-size: 18px;
     color: #666;
@@ -278,6 +310,7 @@ h3 {
     font-weight: bold;
 }
 
+/* Botões para navegação entre meses */
 .month-button {
     background: none;
     border: none;
@@ -288,6 +321,7 @@ h3 {
     font-weight: bold;
 }
 
+/* Dia com check-in no calendário */
 .calendar-grid .checkin-day {
     background-color: #ffeb3b; /* Cor de destaque para dias de check-in */
     border-radius: 50%;
@@ -295,8 +329,9 @@ h3 {
     font-weight: bold;
 }
 
+/* Barra de rolagem para lista de tarefas */
 .tasks-container {
-    height: 60vh; /* Defina uma altura fixa para manter a barra de rolagem */
-    overflow-y: auto; /* Garantia de barra de rolagem */
+    height: 60vh; /* Define uma altura fixa para manter a barra de rolagem */
+    overflow-y: auto; /* Garante a barra de rolagem */
     padding-right: 5px;
 }
