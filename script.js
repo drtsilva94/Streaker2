@@ -1,5 +1,6 @@
 let currentHabitName = '';
 let checkinDays = []; // Inicializa o array de dias de check-in vazio
+let currentDate = new Date(); // Data atual para controle do mês e ano
 
 function showScreen(screen) {
     const screens = document.querySelectorAll('.screen');
@@ -58,7 +59,6 @@ function markAsDone(task) {
     task.appendChild(revertButton);
     document.getElementById("done-list").appendChild(task);
 
-    // Adiciona o dia atual ao array de check-in
     const today = new Date().getDate();
     if (!checkinDays.includes(today)) {
         checkinDays.push(today); // Adiciona o dia ao array
@@ -97,12 +97,27 @@ function displayCurrentDate() {
     dateElement.textContent = today.toLocaleDateString('en-US', options);
 }
 
+// Função para mudar o mês
+function changeMonth(offset) {
+    currentDate.setMonth(currentDate.getMonth() + offset); // Altera o mês conforme o offset
+    generateCalendar(); // Atualiza o calendário
+}
+
 // Função para gerar o calendário e marcar os dias de check-in
 function generateCalendar() {
+    const monthLabel = document.getElementById("month-label");
     const calendarGrid = document.getElementById("calendar-grid");
     calendarGrid.innerHTML = ''; // Limpa o calendário anterior
 
-    const daysInMonth = 30; // Número de dias no mês (pode ser dinâmico)
+    // Atualiza o rótulo do mês
+    const options = { year: 'numeric', month: 'long' };
+    monthLabel.textContent = currentDate.toLocaleDateString('en-US', options);
+
+    // Obtém o primeiro dia e o último dia do mês
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
     for (let day = 1; day <= daysInMonth; day++) {
         const dayElement = document.createElement("span");
         dayElement.textContent = day;
@@ -113,6 +128,14 @@ function generateCalendar() {
         }
 
         calendarGrid.appendChild(dayElement);
+    }
+}
+
+function editHabitName() {
+    const newHabitName = prompt("Enter the new name for the habit:", currentHabitName);
+    if (newHabitName) {
+        currentHabitName = newHabitName;
+        document.getElementById('habit-name').textContent = currentHabitName;
     }
 }
 

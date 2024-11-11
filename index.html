@@ -21,15 +21,11 @@
         <div class="tasks-container">
             <!-- Seção To Do -->
             <h3>To Do</h3>
-            <div class="tasks" id="to-do-list">
-                <!-- Os hábitos para fazer aparecerão aqui -->
-            </div>
+            <div class="tasks" id="to-do-list"></div>
 
             <!-- Seção Done -->
             <h3>Done</h3>
-            <div class="tasks" id="done-list">
-                <!-- Os hábitos concluídos aparecerão aqui -->
-            </div>
+            <div class="tasks" id="done-list"></div>
         </div>
 
         <!-- Botão para Adicionar Novo Hábito -->
@@ -37,28 +33,30 @@
 
         <!-- Navegação -->
         <div class="navigation">
-            <button>Home</button>
+            <button onclick="showScreen('today-screen')">Home</button>
             <button>Profile</button>
-            <button>Progress</button>
+            <button onclick="showScreen('progress-screen')">Progress</button>
             <button>Settings</button>
         </div>
     </div>
 
-      <!-- Tela de Progresso -->
-      <div class="screen progress-screen" style="display: none;">
+    <div class="screen progress-screen" style="display: none;">
         <h2>Progress</h2>
         <div id="habit-name" class="habit-title">Habit Name</div>
         <div class="progress-calendar">
-            <p class="month-label">November 2024</p>
+            <div class="month-navigation">
+                <button onclick="changeMonth(-1)" class="month-button">&#60;</button>
+                <p id="month-label">November 2024</p>
+                <button onclick="changeMonth(1)" class="month-button">&#62;</button>
+            </div>
             <div class="calendar-grid" id="calendar-grid"></div>
         </div>
         <div class="streak-info">
             <p>This Streak: <span id="current-streak">0 days</span></p>
             <p>Longest Streak: <span id="longest-streak">0 days</span></p>
         </div>
-        <button class="edit-habit">Edit Habit</button>
-
-        <!-- Barra de Navegação -->
+        <button class="edit-habit" onclick="editHabitName()">Edit Habit</button>
+    
         <div class="navigation">
             <button onclick="showScreen('today-screen')">Home</button>
             <button>Profile</button>
@@ -66,6 +64,7 @@
             <button>Settings</button>
         </div>
     </div>
+    
 
     <script src="script.js"></script>
 </body>

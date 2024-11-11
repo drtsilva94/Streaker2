@@ -267,22 +267,26 @@ h3 {
     background-color: #ff4f4f;
 }
 
-/* Barra de Navegação */
-.navigation {
+.month-navigation {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin-top: 20px;
-    background-color: #fff;
-    padding-top: 10px;
+    margin-bottom: 10px;
 }
 
-.navigation button {
-    flex: 1;
-    padding: 10px;
-    margin: 0 5px;
-    background-color: #e0e0e0;
+.month-navigation p {
+    font-size: 18px;
+    color: #666;
+    margin: 0;
+    font-weight: bold;
+}
+
+.month-button {
+    background: none;
     border: none;
-    border-radius: 10px;
-    font-size: 14px;
+    font-size: 18px;
     cursor: pointer;
+    color: #666;
+    padding: 0 10px;
+    font-weight: bold;
 }
