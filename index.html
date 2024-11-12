@@ -12,14 +12,19 @@
     <div class="screen today-screen">
         <h2>Today</h2>
         <!-- Exibe a data atual -->
-        <p id="current-date">November 10, 2024</p>
+        <p id="current-date"></p> <!-- Remova a data fixa e deixe para o JavaScript exibir a data atual -->
         
         <!-- Calendário Simples para exibir os dias da semana -->
         <div class="calendar">
-            <!-- Exibe os dias com uma marcação para o dia ativo -->
-            <span class="day">Mon</span><span class="day active">Tue</span><span class="day">Wed</span><span class="day">Thu</span><span class="day">Fri</span><span class="day">Sat</span><span class="day">Sun</span>
+            <!-- Dias da semana em ordem de Domingo a Sábado, para coincidir com o JavaScript -->
+            <span class="day">Sun</span>
+            <span class="day">Mon</span>
+            <span class="day">Tue</span>
+            <span class="day">Wed</span>
+            <span class="day">Thu</span>
+            <span class="day">Fri</span>
+            <span class="day">Sat</span>
         </div>
-
         <!-- Contêiner de Tarefas com Rolagem -->
         <div class="tasks-container">
             <!-- Seção de tarefas a serem feitas -->

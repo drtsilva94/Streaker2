@@ -7,16 +7,36 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveDayOfWeek(); // Define o dia da semana ativo
 });
 
+
+// Função para exibir a data atual no formato "Month Day, Year"
+function displayCurrentDate() {
+    const dateElement = document.getElementById("current-date");
+    const today = new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
+    const currentDate = new Date(today);
+
+    const options = { month: "long", day: "numeric", year: "numeric" };
+    dateElement.textContent = currentDate.toLocaleDateString("en-US", options);
+}
+
+// Função para definir o dia da semana ativo com base no horário de Brasília
 function setActiveDayOfWeek() {
     const daysOfWeek = document.querySelectorAll('.calendar .day'); // Seleciona todos os elementos de dia na div calendar
 
     // Usa o horário de Brasília (GMT-3) para definir o dia da semana atual
     const today = new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
-    const brasiliaDayIndex = new Date(today).getDay(); // Obtém o índice do dia da semana (0 = Domingo, 1 = Segunda, etc.)
+    const currentDate = new Date(today);
+    const brasiliaDayIndex = currentDate.getDay(); // Obtém o índice do dia da semana (0 = Domingo, 1 = Segunda, etc.)
 
-    daysOfWeek.forEach(day => day.classList.remove('active')); // Remove a classe ativa de todos os dias
-    daysOfWeek[brasiliaDayIndex].classList.add('active'); // Adiciona a classe ativa ao dia da semana atual
+    // Remove a classe 'active' de todos os dias da semana
+    daysOfWeek.forEach(day => day.classList.remove('active'));
+
+    // Adiciona a classe 'active' ao dia da semana atual, verificando se existe o índice
+    if (daysOfWeek[brasiliaDayIndex]) {
+        daysOfWeek[brasiliaDayIndex].classList.add('active');
+    }
 }
+
+
 
 // Função para alternar entre telas (por exemplo, tela de progresso e tela de tarefas do dia)
 function showScreen(screen) {
