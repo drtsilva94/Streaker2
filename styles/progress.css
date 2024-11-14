@@ -1,0 +1,99 @@
+/* Estilos gerais para a tela de progresso */
+.progress-screen {
+    display: none; /* Começa escondida, até ser exibida via JavaScript */
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.habit-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.progress-calendar {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Navegação entre os meses */
+.month-navigation {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.month-button {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 1em;
+}
+
+.month-button:hover {
+    background-color: #4a42c3;
+}
+
+#month-label {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #555;
+}
+
+/* Grade do calendário de progresso */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    width: 100%;
+}
+
+.calendar-grid div {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Estilo para os dias ativos e de streak */
+.calendar-grid .active-day {
+    background-color: #6c63ff;
+    color: white;
+}
+
+.streak-info {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #666;
+}
+
+.streak-info span {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Botão de edição de hábito */
+.edit-habit {
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-habit:hover {
+    background-color: #388e3c;
+}

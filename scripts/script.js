@@ -88,6 +88,8 @@ function markAsDone(task, habitName) {
         year: today.getFullYear() 
     };
 
+    
+
     // Adiciona o check-in apenas se ainda não existir para o dia
     if (!checkinData[habitName].some(date => 
         date.day === checkinDate.day && 
@@ -271,3 +273,20 @@ function updateHomeScreen() {
 
 // Atualiza a exibição da data atual ao carregar o conteúdo da página
 document.addEventListener("DOMContentLoaded", displayCurrentDate);
+
+// Função para excluir o hábito atual
+function deleteHabit() {
+    // Solicita confirmação do usuário antes de excluir
+    if (confirm("Are you sure you want to delete this habit?")) {
+        // Encontra o elemento da streak atual pelo ID ou classe do elemento
+        const habitElement = document.querySelector('.screen.progress-screen');
+
+        // Remove o elemento da página
+        if (habitElement) {
+            habitElement.style.display = 'none'; // Ou habitElement.remove() para remover totalmente
+            alert("Habit deleted successfully!");
+        } else {
+            alert("No habit found to delete.");
+        }
+    }
+}

@@ -335,3 +335,11 @@ h3 {
     overflow-y: auto; /* Garante a barra de rolagem */
     padding-right: 5px;
 }
+
+.delete-habit {
+    background-color: red; /* ou qualquer cor de sua preferência */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
