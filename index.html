@@ -6,7 +6,8 @@
     <title>Habit Tracker</title>
     
     <link rel="stylesheet" href="styles/styles.css">
-    <!-- rel="stylesheet" href="styles/progress.css"> -->
+    <link rel="stylesheet" href="styles/progress.css">
+
 </head>
 
 <body>
@@ -24,7 +25,7 @@
             <span class="day">Fri</span>
             <span class="day">Sat</span>
         </div>
-        <!-- Contêiner de Tarefas com Rolagem -->
+        <!-- Contêiner de Tarefas -->
         <div class="tasks-container">  
             <h3>To Do</h3>
             <div class="tasks" id="to-do-list"></div>
@@ -63,19 +64,15 @@
     </div>
 
     
-    <!-- Barra de navegação fixa na parte inferior da página -->
+    <!-- Barra de navegação -->
     <div class="navigation">
-        <!-- Botão para exibir a tela de tarefas de hoje -->
         <button onclick="showScreen('today-screen')">Home</button>
-        <!-- Botão para acessar o perfil do usuário (sem funcionalidade específica) -->
         <button>Profile</button>
-        <!-- Botão para exibir a tela de progresso do hábito -->
         <button onclick="showScreen('progress-screen')">Progress</button>
-        <!-- Botão para acessar as configurações (sem funcionalidade específica) -->
         <button onclick="showScreen('Filter-screen')">Filter</button>
     </div>
 
-    <!-- Importa o arquivo JavaScript para controlar a funcionalidade da página -->
     <script src="scripts/script.js"></script>
+    <script src="scripts/progress.js"></script>
 </body>
 </html>

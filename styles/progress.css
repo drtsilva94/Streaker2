@@ -1,99 +1,148 @@
-/* Estilos gerais para a tela de progresso */
-.progress-screen {
-    display: none; /* Começa escondida, até ser exibida via JavaScript */
-    padding: 20px;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* Estilos para a Tela de Progresso */
 .habit-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 15px;
+    font-size: 24px;
     color: #333;
+    margin: 15px 0;
+    background-color: #e0e7ff;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
 }
 
+/* Estilos adicionais para o calendário de progresso */
 .progress-calendar {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Navegação entre os meses */
-.month-navigation {
-    display: flex;
-    align-items: center;
+/* Estilo do rótulo do mês */
+.month-label {
+    font-size: 18px;
+    color: #666;
     margin-bottom: 10px;
+    text-align: center;
 }
 
-.month-button {
-    background-color: #6c63ff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 10px;
-    font-size: 1em;
-}
 
-.month-button:hover {
-    background-color: #4a42c3;
-}
-
-#month-label {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #555;
-}
-
-/* Grade do calendário de progresso */
+/* Grid para os dias do calendário */
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
-    width: 100%;
+    margin-top: 10px;
 }
 
-.calendar-grid div {
-    background-color: #e0e0e0;
-    color: #333;
-    padding: 10px;
+
+/* Estilos para os dias padrão no calendário */
+.calendar-grid span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
     border-radius: 5px;
-    text-align: center;
+    font-weight: bold;
+    color: #333;
+    background-color: #f0f0f0; /* Cor padrão */
 }
 
-/* Estilo para os dias ativos e de streak */
-.calendar-grid .active-day {
-    background-color: #6c63ff;
-    color: white;
+/* Estilo do contêiner do calendário de progresso */
+.progress-calendar {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
 }
 
+/* Grid para o calendário de progresso */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 colunas para os dias da semana */
+    gap: 5px;
+    margin-top: 10px;
+}
+
+
+/* Estilos para os dias no grid do calendário */
+.calendar-grid span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    background-color: rgb(235, 231, 231); /* Cores para os dias com progresso */
+    border-radius: 5px;
+}
+
+/* Cor de destaque para dias com check-in */
+.calendar-grid .checkin-day {
+    background-color: #ffeb3b; /* Cor para dias de check-in */
+}
+
+/* Dia com check-in no calendário */
+.calendar-grid .checkin-day {
+    background-color: #ffeb3b; /* Cor de destaque para dias de check-in */
+    border-radius: 50%;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Informações de streak (série de dias consecutivos) */
 .streak-info {
-    margin-top: 20px;
-    font-size: 1em;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    font-size: 14px;
     color: #666;
 }
 
-.streak-info span {
-    font-weight: bold;
-    color: #333;
+/* Alinhamento e estilo do texto dentro das informações de streak */
+.streak-info p {
+    margin: 0;
+    text-align: center;
 }
 
-/* Botão de edição de hábito */
+
+/* Estilo do botão para editar hábitos */
 .edit-habit {
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Botão para editar o hábito com efeito ao passar o mouse */
+.edit-habit {
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
     margin-top: 20px;
-    background-color: #4caf50;
+    width: 80%;
+    align-self: center;
+}
+/* Efeito ao passar o mouse no botão de edição */
+.edit-habit:hover {
+    background-color: #ff4f4f;
+}
+
+.delete-habit {
+    background-color: #ff6b6b; /* ou qualquer cor de sua preferência */
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
-}
-
-.edit-habit:hover {
-    background-color: #388e3c;
+    margin-top: 20px;
+    width: 80%;
+    align-self: center;
 }

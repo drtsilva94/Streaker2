@@ -56,7 +56,7 @@ p {
     font-size: 12px;
     color: #333;
     padding: 5px;
-    background-color: #f9f9f9;
+    background-color: #98FB98;
     border-radius: 5px;
     flex: 1; /* Cada dia ocupa o mesmo espaço */
     margin: 0 2px;
@@ -169,130 +169,6 @@ h3 {
     border-radius: 10px;
 }
 
-/* Estilo do contêiner do calendário de progresso */
-.progress-calendar {
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-}
-
-/* Grid para o calendário de progresso */
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 colunas para os dias da semana */
-    gap: 5px;
-    margin-top: 10px;
-}
-
-/* Estilos para os dias no grid do calendário */
-.calendar-grid span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    background-color: #ffeb3b; /* Cores para os dias com progresso */
-    border-radius: 5px;
-}
-
-/* Estilo do botão para editar hábitos */
-.edit-habit {
-    background-color: #ff6b6b;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 15px;
-}
-
-/* Estilos para a Tela de Progresso */
-.habit-title {
-    font-size: 24px;
-    color: #333;
-    margin: 15px 0;
-    background-color: #e0e7ff;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-/* Estilos adicionais para o calendário de progresso */
-.progress-calendar {
-    margin: 20px 0;
-    padding: 15px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo do rótulo do mês */
-.month-label {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-/* Grid para os dias do calendário */
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-top: 10px;
-}
-
-/* Estilos para os dias padrão no calendário */
-.calendar-grid span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #333;
-    background-color: #f0f0f0; /* Cor padrão */
-}
-
-/* Cor de destaque para dias com check-in */
-.calendar-grid .checkin-day {
-    background-color: #ffeb3b; /* Cor para dias de check-in */
-}
-
-/* Informações de streak (série de dias consecutivos) */
-.streak-info {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 15px;
-    font-size: 14px;
-    color: #666;
-}
-
-/* Alinhamento e estilo do texto dentro das informações de streak */
-.streak-info p {
-    margin: 0;
-    text-align: center;
-}
-
-/* Botão para editar o hábito com efeito ao passar o mouse */
-.edit-habit {
-    background-color: #ff6b6b;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    width: 80%;
-    align-self: center;
-}
-
-/* Efeito ao passar o mouse no botão de edição */
-.edit-habit:hover {
-    background-color: #ff4f4f;
-}
 
 /* Controles de navegação entre meses */
 .month-navigation {
@@ -321,13 +197,7 @@ h3 {
     font-weight: bold;
 }
 
-/* Dia com check-in no calendário */
-.calendar-grid .checkin-day {
-    background-color: #ffeb3b; /* Cor de destaque para dias de check-in */
-    border-radius: 50%;
-    color: #fff;
-    font-weight: bold;
-}
+
 
 /* Barra de rolagem para lista de tarefas */
 .tasks-container {
@@ -336,10 +206,3 @@ h3 {
     padding-right: 5px;
 }
 
-.delete-habit {
-    background-color: red; /* ou qualquer cor de sua preferência */
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
